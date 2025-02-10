@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 import ReviewsCard from "../components/ReviewsCard";
 import { Link } from "react-router-dom";
+import ReviewForm from "../components/ReviewForm";
 
 const FilmDetailsPage = () => {
   const { id } = useParams();
@@ -34,9 +35,15 @@ const FilmDetailsPage = () => {
             <p>{review.text}</p>
           </div>
         ))} */}
-        <ReviewsCard movie_id={film?.id} fetchData={fetchFilm} />
+        {film?.reviews && (
+          <ReviewsCard data={film?.reviews} />
+
+        )}
       </section>
 
+      <section>
+        {/* <ReviewForm/> */}
+      </section>
       <footer>
         <Link to='/' className='btn btn-primary'>Ritorna all'elenco</Link>
       </footer>
