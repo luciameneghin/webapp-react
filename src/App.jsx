@@ -3,7 +3,7 @@ import { GlobalProvider } from "../context/GlobalContext"
 
 import DefaultLayout from "./layouts/DefaultLayout"
 import HomePage from "./pages/HomePage"
-import FilmDetailPage from "./pages/FilmDetailsPage"
+import FilmDetailsPage from "./pages/FilmDetailsPage"
 import NotFoundPage from "./pages/404Page"
 
 const App = () => {
@@ -12,10 +12,10 @@ const App = () => {
       <GlobalProvider>
         <BrowserRouter>
           <Routes>
-            <Route Component={DefaultLayout}>
-              <Route path='/' Component={HomePage} />
-              <Route path='/film' Component={FilmDetailPage} />
-              <Route path='*' Component={NotFoundPage} />
+            <Route element={<DefaultLayout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/film/:id" element={<FilmDetailsPage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </BrowserRouter>

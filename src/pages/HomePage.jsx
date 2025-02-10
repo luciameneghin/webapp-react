@@ -18,9 +18,9 @@ const HomePage = () => {
   useEffect(fetchFilms, [])
 
   return (
-    <div>
-      <h3>Lista dei film</h3>
-      <div className="row row-cols-3">
+    <div className="container mt-5">
+      <h2 className="mb-3">Lista dei film</h2>
+      <div className="row row-cols-5">
         {renderFilms()}
       </div>
     </div>

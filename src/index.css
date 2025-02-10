@@ -1,3 +1,7 @@
+.card {
+  overflow: hidden;
+}
+
 .img-card {
   aspect-ratio: 9/16;
   width: 100%;
