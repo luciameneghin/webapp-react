@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
 
-const ReviewsCard = ({ review }) => {
+const ReviewsCard = ({ reviews }) => {
   <div className="review-card">
-    <h4>{review.name}</h4>
-    <p>{review.text}</p>
-    <p><strong>Voto:</strong> {review.vote}</p>
+    <h4>{reviews?.name}</h4>
+    <p>{reviews?.text}</p>
+    <p><strong>Voto:</strong> {reviews?.vote}</p>
   </div>
 }
 

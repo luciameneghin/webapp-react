@@ -24,7 +24,6 @@ const GlobalProvider = ({ children }) => {
       .get(`${api_url}/api/movies/${id}`)
       .then((res) => {
         setFilm(res.data);
-        console.log("Film caricato:", res.data);
       })
       .catch((error) => {
         console.error("Errore nel caricare il film:", error);
