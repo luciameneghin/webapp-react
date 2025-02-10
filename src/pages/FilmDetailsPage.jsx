@@ -24,21 +24,21 @@ const FilmDetailsPage = () => {
   }, [id]);
 
   return (
-    <div className="container mt-5 border-bottom border-1">
+    <div className="container mt-5">
       <header>
-        <h2>Dettagli del Film</h2>
+        <h2 className="mb-4">Dettagli del Film</h2>
         <div className="d-flex">
           <img className="w-25" src={film?.image} alt={film?.title} />
-          <div className="p-4">
+          <div className="p-4 align-content-center">
             <h1>{film?.title}</h1>
-            <h3>{film?.director}</h3>
+            <h5 className="mb-5"><i>Directed by: </i>{film?.director}</h5>
             <p>{film?.abstract}</p>
-            <div><Stars vote={averageVote} /></div> {/* Passiamo averageVote come prop */}
+            <div><Stars vote={averageVote} /></div>
           </div>
         </div>
       </header>
 
-      <section className="film-reviews">
+      <section className="film-reviews my-5">
         <h3>Recensioni</h3>
         {film?.reviews && (
           <ReviewsCard data={film.reviews} />
@@ -52,7 +52,9 @@ const FilmDetailsPage = () => {
       </section>
 
       <footer>
-        <Link to='/' className='btn btn-primary'>Ritorna all'elenco</Link>
+        <div className="text-end">
+          <Link to='/' className='btn btn-danger px-5'>Ritorna all'elenco</Link>
+        </div>
       </footer>
     </div>
   );

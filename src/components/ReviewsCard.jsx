@@ -1,9 +1,10 @@
+
 const ReviewsCard = ({ data = [] }) => {
   return (
-    <div className="review-card">
+    <div className="review-card row row-cols-3">
       {Array.isArray(data) ? data.map(review => (
-        <div key={review?.id} className="card my-2 p-3">
-          <h4>{review?.name}</h4>
+        <div key={review?.id} className="card p-3 col-4 mb-4">
+          <h6>{review?.name}</h6>
           <p>{review?.text}</p>
           <p><strong>Voto:</strong> {review?.vote}</p>
         </div>

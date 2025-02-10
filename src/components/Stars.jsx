@@ -1,4 +1,5 @@
 const Stars = ({ vote }) => {
+
   const renderStars = () => {
     const stars = [];
     for (let i = 0; i < 5; i++) {

@@ -58,53 +58,55 @@ const ReviewForm = ({ movie_id, fetchData }) => {
 
 
   return (
-    <div className="card my-3">
-      <header className="card-header">
-        <h1>Aggiungi una recensione</h1>
-      </header>
-      <div className="card-body">
-        <p className="text-danger">{errorMessage}</p>
-        <form action="#" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Name</label>
-            <input
-              type="text"
-              className="form-control"
-              name='name'
-              placeholder="inserisci nome"
-              value={formData.name}
-              onChange={setFieldValue}
-            />
-          </div>
-          <div className="form-group">
-            <label>Testo</label>
-            <textarea
-              name="text"
-              type="text"
-              className="form-control"
-              placeholder="inserisci testo"
-              value={formData.text}
-              onChange={setFieldValue}
-            >
-            </textarea>
-          </div>
-          <div className="form-group">
-            <label>Voto</label>
-            <input
-              type="number"
-              className="form-control"
-              name='vote'
-              min={1}
-              max={5}
-              placeholder="inserisci voto"
-              value={formData.vote}
-              onChange={setFieldValue}
-            />
-          </div>
-          <div className="d-flex justify-content-end ">
-            <button className="btn btn-primary" type="submit">Invia</button>
-          </div>
-        </form>
+    <div className="">
+      <div className="card my-3">
+        <header className="card-header">
+          <h1>Aggiungi una recensione</h1>
+        </header>
+        <div className="card-body">
+          <p className="text-danger">{errorMessage}</p>
+          <form action="#" onSubmit={handleSubmit}>
+            <div className="form-group mb-3">
+              <label className="mb-2"><strong>Il tuo Nome Utente</strong></label>
+              <input
+                type="text"
+                className="form-control"
+                name='name'
+                placeholder="inserisci il tuo nome"
+                value={formData.name}
+                onChange={setFieldValue}
+              />
+            </div>
+            <div className="form-group mb-3">
+              <label className="mb-2"><strong>La tua Recensione</strong></label>
+              <textarea
+                name="text"
+                type="text"
+                className="form-control"
+                placeholder="inserisci la tua recensione"
+                value={formData.text}
+                onChange={setFieldValue}
+              >
+              </textarea>
+            </div>
+            <div className="form-group">
+              <label className="mb-2"><strong>La tua Valutazione</strong></label>
+              <input
+                type="number"
+                className="form-control"
+                name='vote'
+                min={1}
+                max={5}
+                placeholder="inserisci un numero come valutazione"
+                value={formData.vote}
+                onChange={setFieldValue}
+              />
+            </div>
+            <div className="d-flex justify-content-end mt-3">
+              <button className="btn btn-danger px-5" type="submit">Invia</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   )
