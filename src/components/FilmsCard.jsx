@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 
 const FilmsCard = ({ film }) => {
-  const { id, title, image, director, genre, release_year, abstract } = film;
+  const { title, image, director, genre, release_year } = film;
+
   return (
     <Link to={`/film/${film.id}`} className="card mb-4">
       {image && <img src={image} alt={title} className="img-card" />}

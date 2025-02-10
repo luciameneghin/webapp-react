@@ -10,10 +10,18 @@ const FilmDetailsPage = () => {
   const { id } = useParams();
   const { film, fetchFilm } = useGlobalContext();
 
+  let totalVotes = 0;
+  if (film?.reviews && film.reviews.length > 0) {
+    film.reviews.forEach(review => {
+      totalVotes += review.vote;
+    });
+  }
+
+  const averageVote = film?.reviews && film.reviews.length > 0 ? totalVotes / film.reviews.length : 0;
+
   useEffect(() => {
     fetchFilm(id);
   }, [id]);
-
 
   return (
     <div className="container mt-5 border-bottom border-1">
@@ -25,7 +33,7 @@ const FilmDetailsPage = () => {
             <h1>{film?.title}</h1>
             <h3>{film?.director}</h3>
             <p>{film?.abstract}</p>
-            <div><Stars /></div>
+            <div><Stars vote={averageVote} /></div> {/* Passiamo averageVote come prop */}
           </div>
         </div>
       </header>
@@ -33,7 +41,7 @@ const FilmDetailsPage = () => {
       <section className="film-reviews">
         <h3>Recensioni</h3>
         {film?.reviews && (
-          <ReviewsCard data={film?.reviews} />
+          <ReviewsCard data={film.reviews} />
         )}
       </section>
 
