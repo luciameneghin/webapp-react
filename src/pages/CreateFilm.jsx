@@ -1,18 +1,50 @@
 import { useState } from "react"
-
+import { useNavigate } from "react-router-dom";
+import axios from 'axios'
 
 const CreateFilm = () => {
+  const api_url = `${import.meta.env.VITE_API_URL}/api/movies/`;
+  const navigate = useNavigate('')
+
   const initialFormData = {
     title: '',
     director: '',
-    abstract: ''
+    abstract: '',
+    image: null
   }
 
   const [formData, setFormData] = useState(initialFormData)
 
   const handleSetValue = (e) => {
-    console.log(e.target);
+    const { value, name } = e.target;
+
+    if (name === 'image') {
+      console.log(`path provvisorio img`, URL.createObjectURL(e.target.files[0]));
+      setFormData(prev => ({ ...prev, image: e.target.files[0] }))
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }))
+
+    }
   }
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(formData);
+
+    //info da inviare
+    const dataToSend = new FormData();
+    for (let key in formData) {
+      dataToSend.append(key, formData[key])
+    }
+    console.log(dataToSend);
+
+    axios
+      .post(api_url, dataToSend, { headers: { 'Content-Type': 'multipart/form-data' } })
+      .then(() => navigate('/'))
+      .catch((err) => console.log(err))
+  }
+
   return (
     <div className="container">
       <div className="card my-3">
@@ -21,7 +53,7 @@ const CreateFilm = () => {
         </header>
 
         <section className="card-body">
-          <form action="#">
+          <form action="#" onSubmit={handleSubmit}>
             <div className="form-group mb-3">
               <label className="mb-2"><strong>Titolo</strong></label>
               <input
