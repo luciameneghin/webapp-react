@@ -5,6 +5,7 @@ import DefaultLayout from "./layouts/DefaultLayout"
 import HomePage from "./pages/HomePage"
 import FilmDetailsPage from "./pages/FilmDetailsPage"
 import NotFoundPage from "./pages/404Page"
+import CreateFilm from "./pages/CreateFilm"
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
             <Route element={<DefaultLayout />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/film/:id" element={<FilmDetailsPage />} />
+              <Route path="/film/create" element={<CreateFilm />} />
               <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>

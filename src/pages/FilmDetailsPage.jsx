@@ -52,7 +52,7 @@ const FilmDetailsPage = () => {
       </section>
 
       <footer>
-        <div className="text-end">
+        <div className="text-end mb-5">
           <Link to='/' className='btn btn-danger px-5'>Ritorna all'elenco</Link>
         </div>
       </footer>
