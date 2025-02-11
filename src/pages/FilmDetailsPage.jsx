@@ -25,7 +25,7 @@ const FilmDetailsPage = () => {
 
   return (
     <div className="container mt-5">
-      <header>
+      <section>
         <h2 className="mb-4">Dettagli del Film</h2>
         <div className="d-flex">
           <img className="w-25" src={film?.image} alt={film?.title} />
@@ -36,7 +36,7 @@ const FilmDetailsPage = () => {
             <div><Stars vote={averageVote} /></div>
           </div>
         </div>
-      </header>
+      </section>
 
       <section className="film-reviews my-5">
         <h3>Recensioni</h3>
@@ -53,7 +53,7 @@ const FilmDetailsPage = () => {
 
       <footer>
         <div className="text-end mb-5">
-          <Link to='/' className='btn btn-danger px-5'>Ritorna all'elenco</Link>
+          <Link to='/' className='btn px-5'>Ritorna all'elenco</Link>
         </div>
       </footer>
     </div>

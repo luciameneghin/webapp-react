@@ -1,9 +1,81 @@
-.card {
+header {
+  background-color: #FA3209;
+
+  .btn {
+    background-color: #FA3209;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 1px solid black
+  }
+
+  .btn:hover {
+    background-color: white;
+    color: black;
+  }
+
+  .btn i {
+    margin-right: 10px;
+  }
+
+  .tomato {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+}
+
+.home-card {
   overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
 .img-card {
   aspect-ratio: 9/16;
   width: 100%;
+  max-height: 100%;
   object-fit: cover;
+}
+
+.home-card:hover {
+  transform: scale(1.03);
+}
+
+.card-body {
+  .btn {
+    background-color: #FA3209;
+    color: white
+  }
+
+  .btn:hover {
+    background-color: #333E48;
+    color: white;
+    border: 1px solid white;
+  }
+}
+
+.card-title {
+  height: 80px;
+  border-bottom: 1px solid black;
+  align-items: center
+}
+
+.thumb {
+  margin: 20px 0;
+  align-items: center;
+  border: 2px solid grey;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+footer {
+  .btn {
+    background-color: #FA3209;
+    color: white
+  }
+
+  .btn:hover {
+    background-color: #333E48;
+    color: white;
+    border: 1px solid white;
+  }
 }

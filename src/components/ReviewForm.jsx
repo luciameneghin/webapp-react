@@ -58,7 +58,7 @@ const ReviewForm = ({ movie_id, fetchData }) => {
 
 
   return (
-    <div className="">
+    <>
       <div className="card my-3">
         <header className="card-header">
           <h1>Aggiungi una recensione</h1>
@@ -102,13 +102,14 @@ const ReviewForm = ({ movie_id, fetchData }) => {
                 onChange={setFieldValue}
               />
             </div>
+
             <div className="d-flex justify-content-end mt-3">
-              <button className="btn btn-danger px-5" type="submit">Invia</button>
+              <button className="btn px-5" type="submit">Invia</button>
             </div>
           </form>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
