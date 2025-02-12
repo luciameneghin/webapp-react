@@ -21,16 +21,16 @@ const FilmDetailsPage = () => {
         <h3 className="mb-4">Dettagli del Film</h3>
         <div className="d-flex">
           <img className="w-25" src={film?.image} alt={film?.title} />
-          <div className="p-4 align-content-center">
+          <div className="p-4 align-content-center description">
             <h2>{film?.title}</h2>
             <h5 className="mb-5"><i>Directed by: </i>{film?.director}</h5>
             <p>{film?.abstract}</p>
             <div><Stars film={film} /></div>
-            <button className='btn btn-danger my-3' onClick={() => {
+            <button className='btn btn-delete my-3' onClick={() => {
               if (window.confirm('Sei sicuro di voler eliminare il film dal DataBase?')) {
                 deleteFilm(film?.id, redirect('/'))
               }
-            }}>Elimina</button>
+            }}><i className="bi bi-trash3"></i>Elimina</button>
           </div>
         </div>
       </section>

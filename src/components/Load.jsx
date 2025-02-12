@@ -1,9 +1,7 @@
-
-
 const Load = () => {
   return (
-    <div className="overlay">
-      <div className="spinner-border"></div>
+    <div className="loader-container">
+      <div className="loader"></div>
     </div>
   )
 }

@@ -67,6 +67,16 @@ header {
   overflow: hidden;
 }
 
+.description .btn-delete {
+  background-color: #FA3209;
+  color: white;
+  padding: 10px 20px;
+
+  .bi-trash3 {
+    margin-right: 5px;
+  }
+}
+
 footer {
   .btn {
     background-color: #FA3209;
@@ -77,5 +87,35 @@ footer {
     background-color: #333E48;
     color: white;
     border: 1px solid white;
+  }
+}
+
+
+
+
+/* Loader */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #FA3209;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
