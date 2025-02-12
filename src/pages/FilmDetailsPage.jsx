@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 import ReviewsCard from "../components/ReviewsCard";
 import Stars from "../components/Stars";
@@ -8,16 +8,8 @@ import ReviewForm from "../components/ReviewForm";
 
 const FilmDetailsPage = () => {
   const { id } = useParams();
-  const { film, fetchFilm } = useGlobalContext();
-
-  let totalVotes = 0;
-  if (film?.reviews && film.reviews.length > 0) {
-    film.reviews.forEach(review => {
-      totalVotes += review.vote;
-    });
-  }
-
-  const averageVote = film?.reviews && film.reviews.length > 0 ? totalVotes / film.reviews.length : 0;
+  const { film, fetchFilm, deleteFilm } = useGlobalContext();
+  const redirect = useNavigate()
 
   useEffect(() => {
     fetchFilm(id);
@@ -26,14 +18,19 @@ const FilmDetailsPage = () => {
   return (
     <div className="container mt-5">
       <section>
-        <h2 className="mb-4">Dettagli del Film</h2>
+        <h3 className="mb-4">Dettagli del Film</h3>
         <div className="d-flex">
           <img className="w-25" src={film?.image} alt={film?.title} />
           <div className="p-4 align-content-center">
-            <h1>{film?.title}</h1>
+            <h2>{film?.title}</h2>
             <h5 className="mb-5"><i>Directed by: </i>{film?.director}</h5>
             <p>{film?.abstract}</p>
-            <div><Stars vote={averageVote} /></div>
+            <div><Stars film={film} /></div>
+            <button className='btn btn-danger my-3' onClick={() => {
+              if (window.confirm('Sei sicuro di voler eliminare il film dal DataBase?')) {
+                deleteFilm(film?.id, redirect('/'))
+              }
+            }}>Elimina</button>
           </div>
         </div>
       </section>

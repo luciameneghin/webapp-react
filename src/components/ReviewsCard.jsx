@@ -1,3 +1,4 @@
+import Stars from "./Stars";
 
 const ReviewsCard = ({ data = [] }) => {
   return (
@@ -6,7 +7,7 @@ const ReviewsCard = ({ data = [] }) => {
         <div key={review?.id} className="card p-3 col-4 mb-4">
           <h6>{review?.name}</h6>
           <p>{review?.text}</p>
-          <p><strong>Vote:</strong> {review?.vote} / 5 <i className="bi bi-star-fill text-warning"></i></p>
+          <div><strong>Vote:</strong>  <Stars film={{ reviews: [{ vote: review?.vote }] }} /></div>
         </div>
       )) : <p>Non ci sono recensioni disponibili per questo film</p>}
     </div>

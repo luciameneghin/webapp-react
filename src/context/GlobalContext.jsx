@@ -8,18 +8,25 @@ const GlobalProvider = ({ children }) => {
   const [films, setFilms] = useState([]);
   const [film, setFilm] = useState(null);
 
+  const [isLoading, setIsLoading] = useState(false)
+
+
+  //recupero tutti i film
   const fetchFilms = () => {
+    setIsLoading(true)
     axios.get(`${api_url}/api/movies`)
       .then(res => {
         setFilms(res.data);
       })
       .catch(error => {
         console.error("errore:", error);
-      });
+      })
+      .finally(() => setIsLoading(false))
   };
 
-
+  //recupero 1 film
   const fetchFilm = (id) => {
+    setIsLoading(true)
     axios
       .get(`${api_url}/api/movies/${id}`)
       .then((res) => {
@@ -27,10 +34,17 @@ const GlobalProvider = ({ children }) => {
       })
       .catch((error) => {
         console.error("Errore nel caricare il film:", error);
-      });
+      })
+      .finally(() => setIsLoading(false))
   };
-
-
+  //eliminare il film
+  const deleteFilm = (id, cb) => {
+    setIsLoading(true)
+    axios.delete(`${api_url}/api/movies/${id}`)
+      .then(res => cb())
+      .catch(err => console.log(err))
+      .finally(() => setIsLoading(false))
+  }
 
 
   useEffect(() => {
@@ -41,7 +55,10 @@ const GlobalProvider = ({ children }) => {
     films,
     fetchFilms,
     film,
-    fetchFilm
+    fetchFilm,
+    deleteFilm,
+    isLoading,
+    setIsLoading
   };
 
   return (

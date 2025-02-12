@@ -1,11 +1,13 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
+import { useGlobalContext } from "../context/GlobalContext";
 
 const CreateFilm = () => {
   const api_url = `${import.meta.env.VITE_API_URL}/api/movies/`;
   const genres = ['Azione', 'Dramma', 'Commedia', 'Fantascienza', 'Horror', 'Romantico', 'Documentario', 'Animazione'];
   const navigate = useNavigate('')
+  const { setIsLoading } = useGlobalContext();
 
   const initialFormData = {
     title: '',
@@ -31,7 +33,7 @@ const CreateFilm = () => {
 
   const handleSetValue = (e) => {
     const { value, name } = e.target;
-    console.log('form data:', formData);
+    // console.log('form data:', formData);
 
     if (name === 'image') {
       console.log(`path provvisorio img`, URL.createObjectURL(e.target.files[0]));

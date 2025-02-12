@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useGlobalContext } from "../context/GlobalContext";
 
 const ReviewForm = ({ movie_id, fetchData }) => {
   const api_url = `${import.meta.env.VITE_API_URL}/api/movies/${movie_id}/reviews`;
   const redirect = useNavigate();
+  const { setIsLoading } = useGlobalContext();
 
   const initialFormData = {
     text: '',
@@ -15,6 +17,7 @@ const ReviewForm = ({ movie_id, fetchData }) => {
 
   const [formData, setFormData] = useState(initialFormData)
   const [errorMessage, setErrorMessage] = useState('')
+
 
   const validateForm = () => {
     // console.log(typeof formData.vote);
@@ -37,7 +40,7 @@ const ReviewForm = ({ movie_id, fetchData }) => {
     // console.log(api_url);
     axios.post(api_url, formData, { headers: { 'Content-Type': 'application/json' } })
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         setFormData(initialFormData); //svuoto form
         //cancello eventuale messaggio di errore
         setErrorMessage('')
