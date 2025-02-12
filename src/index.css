@@ -77,6 +77,12 @@ header {
   }
 }
 
+.description .btn-delete:hover {
+  background-color: #333E48;
+  color: white;
+  border: 1px solid white;
+}
+
 footer {
   .btn {
     background-color: #FA3209;
